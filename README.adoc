@@ -1,0 +1,42 @@
+# pfSense
+
+OpenNMS configuration for pfSense
+
+## Installation
+
+.Download and install from GitHub
+[source, bash]
+----
+cd $OPENNMS_HOME/etc/modules-available
+git clone https://github.com/opennms-config-modules/pfsense.git
+----
+
+### Datacollection
+
+.Install datacollection configuration
+[source, bash]
+----
+cd $OPENNMS_HOME/etc/datacollection
+ln -s ../modules-available/pfsense/datacollection/*.xml .
+----
+
+.Include in datacollection-config.xml
+[source, xml]
+----
+<include-collection dataCollectionGroup="pfSense"/>
+----
+
+### Graph report definitions
+
+.Install graph report definitions
+[source, bash]
+----
+cd $OPENNMS_HOME/etc/snmp-graph.properties.d
+ln -s ../modules-available/pfsense/graphs/*.properties .
+----
+
+# License & Authors
+
+- Author:: Ronny Trommer (<ronny@opennms.org>)
+
+Licensed under the GNU Affero General Public License 3+. You may obtain a copy of the License at http://www.gnu.org/licenses/agpl-3.0.html.
